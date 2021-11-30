@@ -18,7 +18,7 @@ resource "google_service_account" "example" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "my-dev-appid-storage-demo-gcsbucket"
+  name     = "my-dev-appid-strg-demo-gcsbucket"
   location = "us"
   encryption {
       default_kms_key_name = "projects/airline1-sabre-wolverine/locations/us/keyRings/savita-keyring-us/cryptoKeys/savita-key-us" #google_kms_crypto_key_iam_member.gcs_encryption.id
