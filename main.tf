@@ -23,6 +23,16 @@ resource "google_storage_bucket" "bucket" {
   encryption {
       default_kms_key_name = "projects/airline1-sabre-wolverine/locations/us/keyRings/savita-keyring-us/cryptoKeys/savita-key-us" #google_kms_crypto_key_iam_member.gcs_encryption.id
   }
+   labels = {
+    owner = "hybridenv"
+    application_division = "pci"
+    application_name = "app1"
+    application_role = "auth"
+    au = "0223092"
+    gcp_region = "us" 
+    environment = "dev" 
+    created = "20211124"   
+  }
 }
 
 resource "google_storage_bucket_object" "archive" {
@@ -49,6 +59,17 @@ resource "google_cloudfunctions_function" "function" {
   environment_variables = {
     MY_ENV_VAR = "my-env-var-value"
     GOOGLE_FUNCTION_SOURCE = "main.py"
+  }
+  
+   labels = {
+    owner = "hybridenv"
+    application_division = "pci"
+    application_name = "app1"
+    application_role = "auth"
+    au = "0223092"
+    gcp_region = "us" 
+    environment = "dev" 
+    created = "20211124"   
   }
   
   ingress_settings = "ALLOW_INTERNAL_ONLY"
