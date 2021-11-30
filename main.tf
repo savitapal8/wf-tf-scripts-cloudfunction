@@ -32,7 +32,7 @@ resource "google_storage_bucket_object" "archive" {
 }
 
 resource "google_cloudfunctions_function" "function" {
-  name        = "function-test1"
+  name        = "my-dev-app-syst-demo-function"
   description = "My function"
   runtime     = "python39"
 
@@ -51,11 +51,11 @@ resource "google_cloudfunctions_function" "function" {
     GOOGLE_FUNCTION_SOURCE = "main.py"
   }
   
-  #ingress_settings = "ALLOW_INTERNAL_ONLY"
-  #vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
-  #vpc_connector_egress_settings = "ALL_TRAFFIC"
-  #service_account_email = google_service_account.example.email
-  service_account_email = null
+  ingress_settings = "ALLOW_INTERNAL_ONLY"
+  vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
+  vpc_connector_egress_settings = "ALL_TRAFFIC"
+  service_account_email = google_service_account.example.email
+  #service_account_email = null
 }
 
 # IAM entry for a single user to invoke the function
