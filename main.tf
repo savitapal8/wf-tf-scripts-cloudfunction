@@ -51,7 +51,8 @@ resource "google_cloudfunctions_function" "function" {
   #ingress_settings = "ALLOW_INTERNAL_ONLY"
   #vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
   #vpc_connector_egress_settings = "ALL_TRAFFIC"
-  service_account_email = google_service_account.example.email
+  #service_account_email = google_service_account.example.email
+  service_account_email = null
 }
 
 # IAM entry for a single user to invoke the function
