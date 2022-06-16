@@ -1,7 +1,7 @@
 provider "google" {
   user_project_override = true
   access_token          = var.access_token
-  project               = "airline1-sabre-wolverine"
+  project               = "modular-scout-345114"
   region                = "us-central1"
 }
 
@@ -14,14 +14,14 @@ resource "google_vpc_access_connector" "vpc_conn_example" {
 resource "google_service_account" "example" {
  account_id   = "service-account-id1"
  display_name = "Function Example Service Account"
- project      = "airline1-sabre-wolverine"
+ project      = "modular-scout-345114"
 }
 
 resource "google_storage_bucket" "bucket" {
   name     = "my-dev-appid-strg-demo-gcsbucket"
   location = "us"
   encryption {
-      default_kms_key_name = "projects/airline1-sabre-wolverine/locations/us/keyRings/savita-keyring-us/cryptoKeys/savita-key-us" #google_kms_crypto_key_iam_member.gcs_encryption.id
+      default_kms_key_name = google_kms_crypto_key_iam_member.gcs_encryption.id #"projects/airline1-sabre-wolverine/locations/us/keyRings/savita-keyring-us/cryptoKeys/savita-key-us"
   }
    labels = {
     owner = "hybridenv"
@@ -72,8 +72,8 @@ resource "google_cloudfunctions_function" "function" {
   ingress_settings = "ALLOW_INTERNAL_ONLY"
   vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
   vpc_connector_egress_settings = "ALL_TRAFFIC"
-  service_account_email = google_service_account.example.email
-  #service_account_email = null
+  #service_account_email = google_service_account.example.email
+  service_account_email = null
 }
 
 # IAM entry for a single user to invoke the function
