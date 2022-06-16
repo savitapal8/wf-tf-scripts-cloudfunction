@@ -7,7 +7,7 @@ provider "google" {
 
 resource "google_vpc_access_connector" "vpc_conn_example" {
   name          = "vpc-connector12"
-  ip_cidr_range = "10.128.0.0/28"
+  ip_cidr_range = "10.129.0.0/28"
   network       = "default"
 }
 
