@@ -7,8 +7,8 @@ provider "google" {
 
 resource "google_vpc_access_connector" "vpc_conn_example" {
   name          = "vpc-connector12"
-  ip_cidr_range = "10.8.0.0/28"
-  network       = "us-dev-appid-syst-demo-vpc"
+  ip_cidr_range = "10.128.0.0/20"
+  network       = "default"
 }
 
 resource "google_service_account" "example" {
